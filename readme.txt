@@ -9,29 +9,6 @@ Change the page order with quick and easy drag and drop.
 
 == Description ==
 
-Adds the ability to rearrange the pages with drag and drop.
-
-The plugin resembles [CMS Tree Page View](http://wordpress.org/extend/plugins/cms-tree-page-view/) in many ways, but is designed to look as native as possible, to be used in client projects. There is no plugin branding or donate button. Just pure functionality.
-
-For theme developers, there's quite a few filters in place for customizing:
-
-`cmspo_post_types`
-Specify the post types the plugin applies to ([example](http://www.billerickson.net/code/change-post-types-cms-page-order/))
-
-`cmspo_max_levels`
-The number of levels pages can be nested.
-
-`cmspo_post_statuses`
-The post statuses to show. Default: all (including custom statuses), except trash, auto-draft and inherit
-
-`cmspo_page_label`
-The label for the subpage in the admin menu ([example](http://www.billerickson.net/code/cms-page-order-customize-page-label/))
-
-`the_title`
-Standard WP filter, but can be used to customize the page names([example](http://www.billerickson.net/code/add-taxonomy-to-page-names-cms-page-order/))
-
-#### In Short:
-
 * Quick and easy drag and drop for rearranging of pages
 * Actions: View, edit, trash and publish (drafts and pending pages)
 * Set the maximum number of nesting levels
@@ -43,7 +20,11 @@ Standard WP filter, but can be used to customize the page names([example](http:/
 
 * English
 * Swedish
+* Italian
 * French (thanks to Stéphane Le Roy)
+
+[Documentation](https://github.com/billerickson/cms-page-order/wiki) | [Support Forum](https://github.com/billerickson/cms-page-order/issues)
+
 
 == Installation ==
 
@@ -98,7 +79,3 @@ Standard WP filter, but can be used to customize the page names([example](http:/
 
 = 0.1b =
 * First release.
-
-== Localization ==
-
-Want to contribute with a translation to your language? Contact me at cmspageorder@gmail.com.
