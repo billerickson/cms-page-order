@@ -3,7 +3,7 @@ Contributors: billerickson
 Tags: page, pages, posts, order, cms, drag-and-drop, rearrange, reorder, management, manage, admin
 Requires at least: 3.1
 Tested up to: 3.4.1
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 
 Change the page order with quick and easy drag and drop.
 
@@ -38,6 +38,9 @@ Change the page order with quick and easy drag and drop.
 3. Post status labels with support for custom statuses.
 
 == Changelog ==
+
+= 0.3.3 =
+* Only enqueue scripts on our admin page, props slipstream
 
 = 0.3.2 = 
 * Added italian translation
