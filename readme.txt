@@ -39,6 +39,9 @@ Change the page order with quick and easy drag and drop.
 
 == Changelog ==
 
+= 0.3.4 =
+* Add filter for default parameters when listing pages
+
 = 0.3.3 =
 * Only enqueue scripts on our admin page, props slipstream
 

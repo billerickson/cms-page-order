@@ -3,7 +3,7 @@
 Plugin Name: CMS Page Order
 Plugin URI: http://wordpress.org/extend/plugins/cms-page-order/
 Description: Change the page order with quick and easy drag and drop.
-Version: 0.3.3
+Version: 0.3.4
 Author: Bill Erickson
 Author URI: http://www.billerickson.net
 License: Public Domain
@@ -28,6 +28,10 @@ License: Public Domain
 	* cmspo_page_label
 		The label for the subpage
 		Default: Page Order
+		
+	* cmspo_list_pages_defaults
+		The default parameters for listing pages
+		Default: Array
 		
 */
 
@@ -300,13 +304,13 @@ function cmspo_list_pages($args = null, $count = false) {
 	// no array in post_status until 3.2
 	$post_type = esc_attr( $_GET['post_type'] );
 	$defaults = array(
-		'post_type'		=> $post_type,
-		'posts_per_page'	=> -1,
-		'orderby'			=> 'menu_order',
-		'order'				=> 'ASC',
-		'post_status'	=> implode(',', cmspo_post_statuses())
+		'post_type'         => $post_type,
+		'posts_per_page'    => -1,
+		'orderby'           => 'menu_order',
+		'order'             => 'ASC',
+		'post_status'       => implode(',', cmspo_post_statuses() )
 	);
-	$r = wp_parse_args( $args, $defaults );
+	$r = wp_parse_args( $args, apply_filters( 'cmspo_list_pages_defaults', $defaults ) );
 	
 	$pages = new WP_Query( $r );
 	wp_reset_query();
