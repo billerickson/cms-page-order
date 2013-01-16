@@ -36,7 +36,7 @@ License: Public Domain
 */
 
 define( 'CMSPO_VERSION', '0.3.3' );
-define( 'CMSPO_URL', WP_PLUGIN_URL . '/cms-page-order/' );
+define( 'CMSPO_URL', plugin_dir_url( __FILE__ ) );
 
 add_action( 'wp_ajax_save_tree', 'cmspo_ajax_save_tree' );
 add_action( 'wp_ajax_remove_label', 'cmspo_ajax_remove_label' );
