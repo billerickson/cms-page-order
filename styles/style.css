@@ -48,7 +48,6 @@
 	position: absolute;
 	width: 10px;
 	left: -1px;
-	background: #fff;
 	z-index: 99;
 }
 #cmspo-pages > li:first-child:after { height: 11px; top: 0; }
