@@ -377,15 +377,15 @@ add_action( 'admin_head-post-new.php', 'post_parent_selector' );
 
 /** Special Walker for the Pages */
 class PO_Walker extends Walker_Page {
-	function start_lvl(&$output, $depth) {
+	function start_lvl(&$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "\n$indent<ol class=\"cmspo-children\">\n";
 	}
-	function end_lvl(&$output, $depth) {
+	function end_lvl(&$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "$indent</ol>\n";
 	}
-	function start_el(&$output, $page, $depth, $args) {
+	function start_el(&$output, $page, $depth = 0, $args = array(), $current_page = 0) {
 		if ( $depth )
 			$indent = str_repeat("\t", $depth);
 		else
