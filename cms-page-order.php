@@ -182,7 +182,7 @@ function cmspo_ajax_save_tree() {
 			$where = array( 'ID' => $post_id );
 			
 			$wpdb->update( $wpdb->posts, $data, $where );
-			clean_page_cache( $post_id );
+			clean_post_cache( $post_id );
 			
 			$order[$page['depth']]++;
 		}
