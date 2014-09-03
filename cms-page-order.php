@@ -182,7 +182,7 @@ function cmspo_ajax_save_tree() {
 			$where = array( 'ID' => $post_id );
 			
 			$wpdb->update( $wpdb->posts, $data, $where );
-			clean_page_cache( $post_id );
+			clean_post_cache( $post_id );
 			
 			$order[$page['depth']]++;
 		}
@@ -352,17 +352,40 @@ function cmspo_do_err() {
 	die();
 }
 
+function post_parent_selector() {
+    // Check if adding new page 
+    if( !isset($_GET['post_type']) || 'page' != $_GET['post_type'] ) 
+        return;
+
+    // Check for pre-selected parent
+    if( !isset($_GET['post_parent']) || empty( $_GET['post_parent'] ) ) 
+        return;
+
+    // There is a pre-selected value for the correct post_type, proceed with script
+    $the_id = $_GET['post_parent'];
+    ?>
+        <script type="text/javascript">
+        jQuery(document).ready( function($) 
+        {
+            $('#parent_id').val(<?php echo $the_id; ?>);
+        });
+        </script>
+    <?php
+}
+
+add_action( 'admin_head-post-new.php', 'post_parent_selector' );
+
 /** Special Walker for the Pages */
 class PO_Walker extends Walker_Page {
-	function start_lvl(&$output, $depth) {
+	function start_lvl(&$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "\n$indent<ol class=\"cmspo-children\">\n";
 	}
-	function end_lvl(&$output, $depth) {
+	function end_lvl(&$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat("\t", $depth);
 		$output .= "$indent</ol>\n";
 	}
-	function start_el(&$output, $page, $depth, $args) {
+	function start_el(&$output, $page, $depth = 0, $args = array(), $current_page = 0) {
 		if ( $depth )
 			$indent = str_repeat("\t", $depth);
 		else
@@ -447,6 +470,9 @@ class PO_Walker extends Walker_Page {
 		// can has capabilities to edit this page?
 		if ( $edit = get_edit_post_link( $page->ID ) )
 			$output .= 	' | <a class="cmspo-edit" href="'.$edit.'">'.__( 'Edit' ).'</a>';
+		// Assume if they can edit user can create
+		if ( $edit = get_edit_post_link( $page->ID ) )
+			$output .= 	' | <a class="cmspo-edit" href="post-new.php?post_type=page&post_parent='.$page->ID.'">'.__( 'New Child Page' ).'</a>';
 		// can has capabilities to delete this page?
 		if ( $delete = get_delete_post_link( $page->ID ) )
 			$output .= 	' | <a class="cmspo-delete" href="'.$delete.'">'._x( 'Trash', 'verb' ).'</a>';
